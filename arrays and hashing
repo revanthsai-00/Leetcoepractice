@@ -1,0 +1,43 @@
+217. Contains Duplicate
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        count_dict={}
+        for i in nums:
+            if i in count_dict and count_dict[i]>=1:
+                return True
+            count_dict[i]=count_dict.get(i,0)+1
+            print(count_dict)
+        return False
+another approach can be sort the array and check adjacent elements
+
+242. Valid Anagram
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        count = defaultdict(int)
+        
+        # Count the frequency of characters in string s
+        for x in s:
+            count[x] += 1
+        
+        # Decrement the frequency of characters in string t
+        for x in t:
+            count[x] -= 1
+        
+        # Check if any character has non-zero frequency
+        for val in count.values():
+            if val != 0:
+                return False
+        
+        return True
+
+
+1929 concatenation Array
+class Solution:
+    def getConcatenation(self, nums: List[int]) -> List[int]:
+        ans=[]
+        for i in range(2):
+            for i in nums:
+                ans.append(i)
+        return ans
