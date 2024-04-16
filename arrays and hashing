@@ -41,3 +41,104 @@ class Solution:
             for i in nums:
                 ans.append(i)
         return ans
+
+125 :valid palindrome
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l=0
+        r=len(s)-1
+        while l<r:
+            if not  s[l].isalnum():
+                l=l+1
+            elif not  s[r].isalnum():
+                r=r-1
+            elif s[l].lower()==s[r].lower():
+                l=l+1
+                r=r-1
+            else:
+                return False
+        return True
+125. Valid Palindrome
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l=0
+        r=len(s)-1
+        while l<r:
+            if not s[l].isalnum():
+                l=l+1
+            elif not s[r].isalnum():
+                r=r-1
+            elif s[l].lower()==s[r].lower():
+                l=l+1
+                r=r-1
+            else:
+                return False
+        return True
+167. Two Sum II - Input Array Is Sorted
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l=0
+        r=len(numbers)-1
+        print(r)
+        while l<r:
+            if numbers[l]+numbers[r]>target:
+                r=r-1
+            elif numbers[l]+numbers[r]<target:
+                l=l+1
+            elif numbers[l]+numbers[r]==target:
+                print(numbers[l],numbers[r])
+                return [l+1,r+1]
+
+Two sum:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        prevmap={}
+        for i,n in enumerate(nums):
+            diff=target-n
+            print(diff)
+            if diff in prevmap:
+                return [prevmap[diff],i]
+            else:
+                prevmap[n]=i
+                print(prevmap)
+        return
+15. 3Sum
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        l=0
+        r=len(nums)-1
+        while l<r:
+            currsum=nums[l]+nums[l+1]
+            if currsum+nums[r]==0:
+                return [[nums[l],nums[l+1],nums[r]]]
+            elif currsum+nums[r]!=0:
+                l=l+1
+                r=r-1
+            else:
+                return []
+680. Valid Palindrome II
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        i, j = 0, len(s) - 1
+        while i<j:
+            if s[i]==s[j]:
+                i=i+1
+                j=j-1
+            else:
+                return self.validutil(s, i + 1, j) or self.validutil(s, i, j - 1)
+        return True
+
+
+
+    def validutil(self,s,i,j):
+        while i<j:
+            if s[i]==s[j]:
+                i=i+1
+                j=j-1
+            else:
+                return False
+        return True
+        
+
+        
