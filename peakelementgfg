@@ -1,0 +1,59 @@
+#binary search:
+
+# It returns location of x in given array arr
+def binarySearch(arr, low, high, x):
+    while low<=high:
+        mid=low+(high-low)//2
+        if arr[mid]==x:
+            return mid
+        elif arr[mid]<x:
+            low=mid+1
+        else:
+            high=mid-1
+    return -1
+# Driver Code
+if __name__ == '__main__':
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+
+    # Function call
+    result = binarySearch(arr, 0, len(arr)-1, x)
+    if result != -1:
+        print("Element is present at index", result)
+    else:
+        print("Element is not present in array")
+
+#find peakutil
+
+
+
+def findPeakUtil(arr, low, high, n):
+    mid=low+(high-low)//2
+    #mid=int(mid)
+    
+    if ((mid == 0 or arr[mid - 1] <= arr[mid]) and
+        (mid == n - 1 or arr[mid + 1] <= arr[mid])):
+        return mid
+        
+    elif (mid>0 and arr[mid-1]>arr[mid]):
+        return findPeakUtil(arr,low,(mid-1),n)
+    
+    else:
+        return findPeakUtil(arr,(mid+1),high,n)
+        
+
+
+# A wrapper over recursive 
+# function findPeakUtil()
+def findPeak(arr, n):
+
+	return findPeakUtil(arr, 0, n - 1, n)
+
+
+# Driver code
+arr = [1, 3, 20, 4, 1, 0]
+n = len(arr)
+print("Index of a peak point is", findPeak(arr, n))
+	
+# This code is contributed by 
+# Smitha Dinesh Semwal
